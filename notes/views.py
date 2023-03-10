@@ -23,7 +23,7 @@ class NoteAPIUpdate(generics.RetrieveUpdateAPIView):
     """
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsOwnerOrReadOnly, )
     # authentication_classes = (TokenAuthentication, )
 
 
@@ -33,4 +33,4 @@ class NoteAPIDestroy(generics.RetrieveDestroyAPIView):
     """
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    permission_classes = (IsAdminOrReadOnly, )
+    permission_classes = (IsOwnerOrReadOnly, )
